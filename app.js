@@ -271,8 +271,8 @@ function resetOCR() {
 }
 
 function openSampleDocs() {
-  window.open('/sample-docs/quality-check-001.html', '_blank');
-  setTimeout(() => window.open('/sample-docs/seisan-shiji-001.html', '_blank'), 300);
+  window.open('/Dashboard_tmp/sample-docs/quality-check-001.html', '_blank');
+  setTimeout(() => window.open('/Dashboard_tmp/sample-docs/seisan-shiji-001.html', '_blank'), 300);
 }
 
 /* ═══════════════════════════════════════════════════
