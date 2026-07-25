@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>品質検査チェックシート QC-2026-0619-015</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "MS Gothic", "Yu Gothic", monospace;
+    font-size: 12px;
+    background: #fff;
+    color: #000;
+    padding: 24px 32px;
+    width: 794px; /* A4 横幅 */
+  }
+  .company { text-align: center; font-size: 11px; color: #555; margin-bottom: 4px; }
+  h1 { text-align: center; font-size: 18px; letter-spacing: 8px; border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 6px 0; margin-bottom: 16px; }
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 14px; }
+  .meta-row { display: flex; border: 1px solid #666; }
+  .meta-label { background: #e8e8e8; padding: 4px 8px; white-space: nowrap; font-weight: bold; border-right: 1px solid #666; min-width: 80px; }
+  .meta-value { padding: 4px 8px; flex: 1; color: #1a237e; font-family: "Yu Mincho", "MS Mincho", serif; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+  th { background: #2c3e6b; color: #fff; padding: 6px 8px; font-size: 11px; text-align: center; }
+  td { border: 1px solid #888; padding: 5px 7px; vertical-align: middle; }
+  tr:nth-child(even) td { background: #f9f9f9; }
+
+  .result-ok { text-align: center; font-size: 18px; color: #1565c0; font-weight: bold; }
+  .result-ng { text-align: center; font-size: 16px; color: #c62828; font-weight: bold; }
+  .ng-content { color: #c62828; font-family: "Yu Mincho", serif; font-size: 11px; }
+  .takt { text-align: right; font-family: "Courier New", monospace; }
+  .process-cell { font-size: 11px; }
+
+  .footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .sign-box { border: 1px solid #888; padding: 6px; min-height: 48px; }
+  .sign-label { font-size: 10px; color: #555; margin-bottom: 4px; }
+  .sign-name { font-family: "Yu Mincho", serif; color: #1a237e; padding-top: 8px; font-size: 13px; }
+
+  .judge-box { margin-top: 10px; border: 2px solid #000; padding: 8px 16px; display: flex; align-items: center; gap: 20px; }
+  .judge-label { font-weight: bold; font-size: 13px; }
+  .judge-fail { font-size: 16px; color: #c62828; font-weight: bold; border: 2px solid #c62828; padding: 2px 12px; }
+  .note-small { font-size: 10px; color: #555; margin-top: 14px; border-top: 1px solid #ccc; padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<div class="company">株式会社 山田製作所　品質管理部</div>
+<h1>品 質 検 査 チ ェ ッ ク シ ー ト</h1>
+
+<div class="meta-grid">
+  <div class="meta-row"><div class="meta-label">書類No.</div><div class="meta-value">QC-2026-0619-015</div></div>
+  <div class="meta-row"><div class="meta-label">検査日</div><div class="meta-value">2026年6月19日</div></div>
+  <div class="meta-row"><div class="meta-label">ページ</div><div class="meta-value">1 / 1</div></div>
+
+  <div class="meta-row"><div class="meta-label">品番</div><div class="meta-value">GEAR-001</div></div>
+  <div class="meta-row"><div class="meta-label">品名</div><div class="meta-value">精密ギア (M2)</div></div>
+  <div class="meta-row"><div class="meta-label">ロット番号</div><div class="meta-value">L202606-042</div></div>
+
+  <div class="meta-row"><div class="meta-label">検査員</div><div class="meta-value">佐藤 花子</div></div>
+  <div class="meta-row"><div class="meta-label">生産指示No.</div><div class="meta-value">WO-2026-0618-042</div></div>
+  <div class="meta-row"><div class="meta-label">検査数量</div><div class="meta-value">500 個</div></div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:30px">No.</th>
+      <th>検査項目</th>
+      <th>工程</th>
+      <th>品質基準</th>
+      <th style="width:50px">判定</th>
+      <th>NG 内容</th>
+      <th style="width:70px">タクト<br>(分)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">1</td>
+      <td>外観検査</td>
+      <td class="process-cell">最終検査</td>
+      <td>外観良好・キズ・変形なし</td>
+      <td class="result-ok">○</td>
+      <td></td>
+      <td class="takt">6.5</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">2</td>
+      <td>寸法測定</td>
+      <td class="process-cell">加工</td>
+      <td>図面寸法 ±0.05mm 以内</td>
+      <td class="result-ng">✕</td>
+      <td class="ng-content">寸法公差外（+0.12mm）</td>
+      <td class="takt">11.0</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">3</td>
+      <td>溶接検査</td>
+      <td class="process-cell">溶接</td>
+      <td>JIS Z 3101 溶接規格準拠</td>
+      <td class="result-ok">○</td>
+      <td></td>
+      <td class="takt">23.5</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">4</td>
+      <td>表面粗さ測定</td>
+      <td class="process-cell">表面処理</td>
+      <td>Ra 1.6 μm 以下</td>
+      <td class="result-ng">✕</td>
+      <td class="ng-content">表面粗さ不良（Ra 2.3μm）</td>
+      <td class="takt">28.0</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">5</td>
+      <td>組付け確認</td>
+      <td class="process-cell">組立</td>
+      <td>締付トルク 25Nm ± 2Nm</td>
+      <td class="result-ok">○</td>
+      <td></td>
+      <td class="takt">14.5</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">6</td>
+      <td>耐圧テスト</td>
+      <td class="process-cell">最終検査</td>
+      <td>0.5 MPa、60秒保持・漏洩なし</td>
+      <td class="result-ok">○</td>
+      <td></td>
+      <td class="takt">7.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="judge-box">
+  <div class="judge-label">総合判定：</div>
+  <div class="judge-fail">不 合 格（NG 2件）</div>
+  <div style="font-size:11px; color:#555">
+    NG品は別ロットに仕分けし、不適合品管理票を添付すること
+  </div>
+</div>
+
+<div class="footer" style="margin-top:14px">
+  <div class="sign-box">
+    <div class="sign-label">検査員</div>
+    <div class="sign-name">佐藤 花子</div>
+  </div>
+  <div class="sign-box">
+    <div class="sign-label">確認者</div>
+    <div class="sign-name">山田 主任</div>
+  </div>
+  <div class="sign-box">
+    <div class="sign-label">次回検査予定日</div>
+    <div class="sign-name">2026-06-20</div>
+  </div>
+</div>
+
+<div class="note-small">
+  ※ 本シートはデモ用サンプルです。スクリーンショット後、OCR読み取りタブにアップロードしてください。<br>
+  ※ Win: [Win+Shift+S] でスクリーンショットが撮れます。
+</div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>生産指示書 WO-2026-0618-042</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "MS Gothic", "Yu Gothic", monospace;
+    font-size: 12px;
+    background: #fff;
+    color: #000;
+    padding: 24px 32px;
+    width: 794px;
+  }
+  .company { text-align: center; font-size: 11px; color: #555; margin-bottom: 4px; }
+  h1 { text-align: center; font-size: 20px; letter-spacing: 10px; border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 7px 0; margin-bottom: 16px; }
+
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 14px; }
+  .meta-row { display: flex; border: 1px solid #666; }
+  .meta-label { background: #e0e4f0; padding: 5px 10px; font-weight: bold; border-right: 1px solid #666; min-width: 110px; }
+  .meta-value { padding: 5px 10px; flex: 1; color: #0d1a5e; font-family: "Yu Mincho", "MS Mincho", serif; font-size: 13px; }
+
+  .section-title { font-weight: bold; border-left: 5px solid #2c3e6b; padding-left: 8px; margin: 14px 0 8px; font-size: 13px; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+  th { background: #2c3e6b; color: #fff; padding: 6px 10px; font-size: 11px; text-align: center; }
+  td { border: 1px solid #888; padding: 6px 10px; vertical-align: middle; }
+  tr:nth-child(even) td { background: #f5f6fb; }
+  .num { text-align: right; font-family: "Courier New", monospace; }
+  .center { text-align: center; }
+
+  .notes-box { border: 1px solid #888; padding: 10px; min-height: 60px; background: #fffef0; }
+  .notes-text { font-family: "Yu Mincho", serif; color: #0d1a5e; line-height: 1.8; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; margin-top: 16px; }
+  .sign-box { border: 1px solid #888; padding: 6px; min-height: 56px; }
+  .sign-label { font-size: 10px; color: #555; margin-bottom: 4px; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 3px; }
+  .sign-name { font-family: "Yu Mincho", serif; color: #0d1a5e; padding-top: 10px; font-size: 12px; text-align: center; }
+
+  .priority { display: inline-block; border: 2px solid #c62828; color: #c62828; padding: 1px 8px; font-weight: bold; margin-left: 8px; }
+  .note-small { font-size: 10px; color: #555; margin-top: 14px; border-top: 1px solid #ccc; padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<div class="company">株式会社 山田製作所　製造部</div>
+<h1>生 産 指 示 書</h1>
+
+<div class="meta-grid">
+  <div class="meta-row"><div class="meta-label">指示書No.</div><div class="meta-value">WO-2026-0618-042</div></div>
+  <div class="meta-row"><div class="meta-label">発行日</div><div class="meta-value">2026年6月18日</div></div>
+
+  <div class="meta-row"><div class="meta-label">品番</div><div class="meta-value">GEAR-001</div></div>
+  <div class="meta-row"><div class="meta-label">品名</div><div class="meta-value">精密ギア (M2)<span class="priority">緊急</span></div></div>
+
+  <div class="meta-row"><div class="meta-label">指示数量</div><div class="meta-value">500 個</div></div>
+  <div class="meta-row"><div class="meta-label">完成予定日</div><div class="meta-value">2026年6月25日</div></div>
+
+  <div class="meta-row"><div class="meta-label">担当者</div><div class="meta-value">田中 一郎</div></div>
+  <div class="meta-row"><div class="meta-label">発行者</div><div class="meta-value">山田 部長</div></div>
+</div>
+
+<div class="section-title">工程指示</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width:40px">順序</th>
+      <th>工程名</th>
+      <th>作業内容</th>
+      <th style="width:100px">設備・機械</th>
+      <th style="width:80px">標準時間</th>
+      <th style="width:70px">担当者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="center">1</td>
+      <td>加工</td>
+      <td>M2ギア歯切り・バリ取り、寸法公差 ±0.05mm</td>
+      <td>MC-03 マシニングセンタ</td>
+      <td class="num">9.0 分/個</td>
+      <td class="center">田中 一郎</td>
+    </tr>
+    <tr>
+      <td class="center">2</td>
+      <td>溶接</td>
+      <td>ハブ部 CO2溶接、JIS Z 3101 規格準拠</td>
+      <td>溶接機 WE-12</td>
+      <td class="num">22.0 分/個</td>
+      <td class="center">鈴木 明</td>
+    </tr>
+    <tr>
+      <td class="center">3</td>
+      <td>表面処理</td>
+      <td>ニッケルメッキ処理 10μm、表面粗さ Ra1.6以下</td>
+      <td>メッキ槽 PL-02</td>
+      <td class="num">27.0 分/個</td>
+      <td class="center">外注（山本メッキ）</td>
+    </tr>
+    <tr>
+      <td class="center">4</td>
+      <td>組立</td>
+      <td>シャフト組付け、締付トルク 25Nm ±2Nm</td>
+      <td>組立台 AS-05</td>
+      <td class="num">14.0 分/個</td>
+      <td class="center">佐藤 花子</td>
+    </tr>
+    <tr>
+      <td class="center">5</td>
+      <td>最終検査</td>
+      <td>外観・寸法・耐圧（0.5MPa 60秒）全数検査</td>
+      <td>三次元測定機</td>
+      <td class="num">13.0 分/個</td>
+      <td class="center">佐藤 花子</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">材料・部品</div>
+<table>
+  <thead>
+    <tr><th>品番</th><th>品名・材質</th><th>数量</th><th>単位</th><th>在庫確認</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>RAW-M2-SS400</td><td>SS400 丸棒 φ32×60mm</td><td class="num">520</td><td>本</td><td class="center">○ 確認済</td></tr>
+    <tr><td>RAW-SHFT-304</td><td>SUS304 シャフト φ8×80mm</td><td class="num">510</td><td>本</td><td class="center">○ 確認済</td></tr>
+    <tr><td>CONS-BOLT-M6</td><td>ボルト M6×15 ステン</td><td class="num">1050</td><td>個</td><td class="center">△ 要発注</td></tr>
+  </tbody>
+</table>
+
+<div class="section-title">備考・特記事項</div>
+<div class="notes-box">
+  <div class="notes-text">
+    ・前回ロット（L202605-038）で寸法不良が3件発生しているため、加工工程を重点確認すること。<br>
+    ・メッキ工程は山本メッキへの外注品。受入検査を必ず実施すること。<br>
+    ・完成後、品質チェックシート（QC票）を品質管理部へ提出のこと。
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div class="sign-box"><div class="sign-label">作成</div><div class="sign-name">山田 部長</div></div>
+  <div class="sign-box"><div class="sign-label">確認</div><div class="sign-name">鈴木 課長</div></div>
+  <div class="sign-box"><div class="sign-label">製造受領</div><div class="sign-name">田中 一郎</div></div>
+  <div class="sign-box"><div class="sign-label">品質確認</div><div class="sign-name"></div></div>
+</div>
+
+<div class="note-small">
+  ※ 本シートはデモ用サンプルです。スクリーンショット後、OCR読み取りタブにアップロードしてください。<br>
+  ※ Win: [Win+Shift+S] でスクリーンショットが撮れます。
+</div>
+
+</body>
+</html>

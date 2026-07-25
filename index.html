@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISO9001 品質管理システム — デモ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-left">
+    <div class="logo">⚙️ ISO9001 品質管理システム</div>
+    <div class="header-sub">製造業向け AI書類読み取り &amp; 品質分析デモ</div>
+  </div>
+  <div id="statsBar" class="stats-bar">読み込み中...</div>
+</header>
+
+<!-- タブナビ -->
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="ocr">📷 書類読み取り (OCR)</button>
+  <button class="tab-btn" data-tab="dashboard">📊 品質ダッシュボード</button>
+  <button class="tab-btn" data-tab="audit">📄 監査エビデンス出力</button>
+</nav>
+
+<main>
+
+<!-- ─── TAB: OCR ─────────────────────────────── -->
+<div id="tab-ocr" class="tab-pane active">
+  <div class="ocr-layout">
+
+    <!-- 左: アップロード -->
+    <div class="upload-card">
+      <div class="section-title">書類の写真をアップロード</div>
+
+      <div id="dropZone" class="drop-zone" onclick="document.getElementById('fileInput').click()">
+        <div id="dropContent">
+          <div class="drop-icon">📄</div>
+          <div class="drop-text">ここをクリック または 写真をドロップ</div>
+          <div class="drop-sub">JPG / PNG（最大15MB）</div>
+        </div>
+        <img id="previewImg" class="preview-img hidden" alt="プレビュー">
+      </div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none">
+
+      <div style="margin-top:12px; display:flex; gap:8px;">
+        <button class="btn btn-primary" id="ocrBtn" onclick="runOCR()" disabled>
+          🔍 AI で読み取り開始
+        </button>
+        <button class="btn btn-ghost" onclick="openSampleDocs()">
+          📋 サンプル書類を開く
+        </button>
+      </div>
+
+      <div class="hint-box">
+        <b>使い方</b><br>
+        ① 上のボタンで <b>サンプル書類を開く</b> → ブラウザで表示された書類を<br>
+        　スクリーンショット（Win: <code>Win+Shift+S</code>）<br>
+        ② 保存した画像をここにアップロード<br>
+        ③「AI で読み取り開始」→ 内容を確認して保存
+      </div>
+    </div>
+
+    <!-- 右: OCR結果 -->
+    <div class="result-card">
+      <div class="section-title">読み取り結果 <span id="resultBadge" class="badge hidden"></span></div>
+      <div id="ocrSpinner" class="spinner-area hidden">
+        <div class="spinner"></div>
+        <div>Claude AI が書類を解析中...</div>
+      </div>
+      <div id="ocrResult" class="result-empty">
+        書類をアップロードすると、ここに読み取り結果が表示されます
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TAB: Dashboard ───────────────────────── -->
+<div id="tab-dashboard" class="tab-pane hidden">
+
+  <!-- 日本語でカードを作るビルダー -->
+  <div class="builder">
+    <div class="builder-lbl">
+      <span>🪄 カードを作る</span>
+      <span class="ai-badge">AI</span>
+      <span class="builder-mode" id="builderMode">モードを確認中...</span>
+    </div>
+    <div class="builder-row">
+      <input id="prompt" type="text" autocomplete="off"
+        placeholder="例）不良率が高い製品トップ3を棒グラフで／指摘の内訳を円グラフで／NG率の推移を折れ線で">
+      <button class="btn btn-primary" id="addCard">＋ 追加</button>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="interp" id="interp"></div>
+  </div>
+
+  <!-- 月選択 + データ操作 -->
+  <div class="dash-toolbar">
+    <label>対象月：
+      <input type="month" id="monthPicker" class="month-input">
+    </label>
+    <button class="btn btn-primary" onclick="loadDashboard()">📊 更新</button>
+    <button class="btn btn-ghost" onclick="seedData(false)">▶ サンプルデータ投入</button>
+    <button class="btn btn-danger" onclick="clearData()">🗑 データ削除</button>
+    <span class="dash-hint">↔ カード左の <b>⠿</b> で並べ替え／右上の <b>×</b> で削除</span>
+    <button class="btn btn-ghost" id="resetLayout" style="margin-left:auto">レイアウト初期化</button>
+  </div>
+
+  <!-- カード盤面（app.js が実データで生成） -->
+  <div class="board" id="board">
+    <div class="board-empty" id="boardEmpty">「▶ サンプルデータ投入」を押すか、書類を読み取ると<br>ここに品質レポートが表示されます。</div>
+  </div>
+</div>
+
+<!-- ─── TAB: Audit ───────────────────────────── -->
+<div id="tab-audit" class="tab-pane hidden">
+  <div class="audit-layout">
+    <div class="audit-card">
+      <div class="section-title">ISO9001 監査エビデンス 自動生成</div>
+      <p style="color:#555; margin-bottom:20px">
+        データベースに蓄積された検査記録から、<b>ISO9001監査で提出できる品質管理記録書</b>を自動生成します。<br>
+        PDF保存はブラウザの印刷機能（Ctrl+P → PDF保存）をご利用ください。
+      </p>
+
+      <div class="audit-form">
+        <label>対象月：
+          <input type="month" id="auditMonth" class="month-input">
+        </label>
+        <button class="btn btn-primary" onclick="exportAudit()">
+          📄 監査エビデンスを生成・表示
+        </button>
+      </div>
+
+      <div class="audit-preview" id="auditPreview">
+        <div class="audit-sample">
+          <b>自動生成される内容：</b>
+          <ul>
+            <li>✅ 文書番号・対象期間・発行日の自動記入</li>
+            <li>✅ 製品別 品質実績表（検査数・NG数・NG率・判定）</li>
+            <li>✅ 不良内容分析（上位ランキング・構成比）</li>
+            <li>✅ 工程別タクトタイム実績と評価</li>
+            <li>✅ 確認・承認サインエリア付き</li>
+            <li>✅ ブラウザ印刷でそのままPDF化</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- トースト通知 -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
