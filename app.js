@@ -729,7 +729,7 @@ async function clearData() {
 function exportAudit() {
   const month = document.getElementById('auditMonth').value;
   if (!month) { showToast('月を選択してください'); return; }
-  window.open(api/export/audit?month=${month}`, '_blank');
+  window.open('api/export/audit?month=${month}`, '_blank');
 }
 
 /* ─── Utils ───────────────────────────────── */
